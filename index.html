@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio 006 · Formulario</title>
+  <link rel="stylesheet" href="estils.css">
+</head>
+<body id="pagina-formulario">
+  <header class="navbar">
+    <nav class="menu">
+      <a href="index.html" aria-current="page">Formulario</a>
+      <a href="interaccio.html">Interactividad</a>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <h1>Formulario personalizado con HTML + CSS</h1>
+    <p>Ejemplo de validación, estados y personalización visual sin JavaScript.</p>
+
+    <!-- Formulario principal -->
+    <form action="destino.php" method="post" class="formulario" novalidate>
+      
+      <!-- Nombre completo con patrón -->
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" name="nombre"
+             placeholder="Nombre y Apellido"
+             pattern="[A-Za-zÁ-ÿ\s]{3,40}"
+             title="Nombre entre 3 y 40 caracteres, solo letras y espacios"
+             required>
+
+      <!-- Correo electrónico -->
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email"
+             placeholder="ejemplo@correo.com" required>
+
+      <!-- Teléfono con patrón -->
+      <label for="telefono">Teléfono:</label>
+      <input type="tel" id="telefono" name="telefono"
+             placeholder="+34600000000"
+             pattern="^\+?\d{9,13}$"
+             title="Introduce un número válido con 9 a 13 dígitos"
+             required>
+
+      <!-- Edad -->
+      <label for="edad">Edad:</label>
+      <input type="number" id="edad" name="edad" min="0" max="120" step="1" required>
+
+      <!-- Fecha de nacimiento -->
+      <label for="nacimiento">Fecha de nacimiento:</label>
+      <input type="date" id="nacimiento" name="nacimiento" required>
+
+      <!-- Hora -->
+      <label for="hora">Hora preferida:</label>
+      <input type="time" id="hora" name="hora">
+
+      <!-- Color -->
+      <label for="color">Color preferido:</label>
+      <input type="color" id="color" name="color" value="#4c6ef5">
+
+      <!-- Control deslizante -->
+      <label for="volumen">Nivel de volumen:</label>
+      <input type="range" id="volumen" name="volumen" min="0" max="100" value="50">
+
+      <!-- Checkboxes (aficiones) -->
+      <fieldset>
+        <legend>Aficiones:</legend>
+        <label><input type="checkbox" name="aficiones" value="musica"> 🎵 Música</label>
+        <label><input type="checkbox" name="aficiones" value="deporte"> ⚽ Deporte</label>
+        <label><input type="checkbox" name="aficiones" value="lectura"> 📚 Lectura</label>
+        <label><input type="checkbox" name="aficiones" value="videojuegos"> 🎮 Videojuegos</label>
+      </fieldset>
+
+      <!-- Radios (nivel de estudios) -->
+      <fieldset>
+        <legend>Nivel de estudios:</legend>
+        <label><input type="radio" name="estudios" value="eso" required> ESO</label>
+        <label><input type="radio" name="estudios" value="bachillerato"> Bachillerato</label>
+        <label><input type="radio" name="estudios" value="fp"> Formación Profesional</label>
+        <label><input type="radio" name="estudios" value="universidad"> Universidad</label>
+      </fieldset>
+
+      <!-- Select (país) -->
+      <label for="pais">País:</label>
+      <select id="pais" name="pais" required>
+        <option value="">-- Selecciona un país --</option>
+        <option value="es">España</option>
+        <option value="fr">Francia</option>
+        <option value="it">Italia</option>
+        <option value="pt">Portugal</option>
+      </select>
+
+      <!-- Textarea -->
+      <label for="comentarios">Comentarios:</label>
+      <textarea id="comentarios" name="comentarios" rows="4" cols="40"
+                placeholder="Escribe tu comentario aquí..." required></textarea>
+
+      <!-- Botones -->
+      <input type="submit" value="Enviar">
+      <input type="reset" value="Borrar">
+
+    </form>
+  </main>
+
+  <footer class="pie">
+    <small>Ejercicio 006 · Sin JavaScript</small>
+  </footer>
+</body>
+</html>

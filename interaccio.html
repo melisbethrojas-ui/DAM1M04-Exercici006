@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio 006 · Interactividad CSS</title>
+  <link rel="stylesheet" href="estils.css">
+</head>
+<body id="pagina-interaccion">
+  <header class="navbar responsive">
+    <a class="logo" href="#">Ex006</a>
+
+    <!-- Toggle menú móvil -->
+    <input type="checkbox" id="menu-toggle" class="toggle-oculto">
+    <label for="menu-toggle" class="hamburguesa">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="menu">
+      <a href="index.html">Formulario</a>
+      <a href="interaccio.html" aria-current="page">Interactividad</a>
+      <a href="#tabs">Pestañas</a>
+      <a href="#extra">Componente extra</a>
+    </nav>
+  </header>
+
+  <main class="contenedor">
+    <!-- Pestañas CSS -->
+    <section id="tabs" class="bloque">
+      <h1>Pestañas con CSS</h1>
+
+      <input type="radio" id="tab1" name="tab" class="tab-oculto" checked>
+      <input type="radio" id="tab2" name="tab" class="tab-oculto">
+      <input type="radio" id="tab3" name="tab" class="tab-oculto">
+
+      <div class="tab-cabecera">
+        <label for="tab1" class="tab-btn">Introducción</label>
+        <label for="tab2" class="tab-btn">Detalle</label>
+        <label for="tab3" class="tab-btn">Resumen</label>
+      </div>
+
+      <div class="tab-contenido">
+        <article class="contenido contenido-1">
+          <h2>Introducción</h2>
+          <p>Las pestañas funcionan solo con CSS usando radios y el selector :has().</p>
+        </article>
+        <article class="contenido contenido-2">
+          <h2>Detalle</h2>
+          <p>Se utiliza :checked y :has() para mostrar u ocultar secciones.</p>
+        </article>
+        <article class="contenido contenido-3">
+          <h2>Resumen</h2>
+          <p>Sin JavaScript, accesible con etiquetas <label>.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Componente extra: Flip card -->
+    <section id="extra" class="bloque">
+      <h1>Flip card con checkbox</h1>
+
+      <input type="checkbox" id="flip" class="toggle-oculto">
+      <label for="flip" class="btn primario">G

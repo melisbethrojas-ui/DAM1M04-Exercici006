@@ -1,0 +1,170 @@
+/* ===== Reset y estilos base ===== */
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2937;
+  background: #f8fafc;
+}
+
+/* Enlaces */
+a { color: #1f5cff; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* Titulares y párrafos */
+h1, h2 { margin: 0 0 .5rem; }
+p { margin: 0 0 1rem; }
+
+/* ===== Layout principal con Flexbox ===== */
+.navbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 1rem;
+  padding: .75rem 1rem;
+  background: #fff; border-bottom: 1px solid #e5e7eb;
+}
+.menu { display: flex; gap: .75rem; margin-left: auto; }
+.menu a[aria-current="page"] { font-weight: 600; color: #111827; }
+
+.contenedor {
+  display: flex; flex-direction: column; gap: 1.25rem;
+  max-width: 960px; margin: 0 auto; padding: 1rem;
+}
+.bloque {
+  background: #fff; border: 1px solid #000000; border-radius: .75rem;
+  padding: 1rem;
+}
+
+/* ===== Formulario ===== */
+.formulario { display: grid; gap: 1rem; }
+.fila { display: grid; gap: .5rem; }
+label { font-weight: 600; }
+
+/* Inputs y campos */
+input, select, textarea, button { font: inherit; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="color"],
+input[type="range"],
+select,
+textarea {
+  border: 1.5px solid #cbd5e1;
+  border-radius: .5rem;
+  padding: .6rem .7rem;
+  background: #f9fafb;
+  color: #111827;
+  transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
+}
+
+/* Textarea */
+textarea { resize: vertical; min-height: 120px; }
+
+/* Estado focus con transición animada */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #4c6ef5;
+  box-shadow: 0 0 0 .25rem rgba(76,110,245,0.15);
+  transform: translateY(-1px);
+}
+
+/* Estados de validación */
+input:required:invalid,
+select:required:invalid {
+  border-color: #ef4444; /* rojo si inválido */
+}
+input:required:valid,
+select:required:valid {
+  border-color: #10b981; /* verde si válido */
+}
+
+/* Personalización color y range */
+input[type="color"] {
+  padding: 0;
+  height: 40px; width: 60px;
+  border-radius: .5rem;
+  cursor: pointer;
+}
+
+input[type="range"] {
+  appearance: none;
+  height: 6px; background: #e5e7eb; border-radius: 999px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #4c6ef5; border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  transition: transform .15s ease, background-color .2s ease;
+}
+input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.05); }
+
+/* ===== Checkbox y Radio personalizados ===== */
+fieldset { border: none; padding: 0; margin: 0; }
+legend { font-weight: 600; margin-bottom: .5rem; }
+
+.opc-check input,
+.opc-radio input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.opc-check span,
+.opc-radio span {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .5rem .6rem;
+  border: 1.5px solid #cbd5e1; border-radius: .5rem;
+  background: #f9fafb; cursor: pointer;
+  transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+
+/* Icono base */
+.opc-check span::before,
+.opc-radio span::before {
+  content: "";
+  width: 18px; height: 18px;
+  border: 2px solid #64748b;
+  border-radius: 4px;
+  background: #fff;
+  transition: background-color .2s, transform .15s;
+}
+
+/* Radio círculo */
+.opc-radio span::before { border-radius: 50%; }
+
+/* Estado checked */
+.opc-check input:checked + span {
+  border-color: #10b981; background: #ecfdf5;
+}
+.opc-check input:checked + span::before {
+  background: #10b981;
+  box-shadow: inset 0 0 0 4px #fff;
+}
+
+.opc-radio input:checked + span {
+  border-color: #4c6ef5; background: #eef2ff;
+}
+.opc-radio input:checked + span::before {
+  background: #4c6ef5;
+  box-shadow: inset 0 0 0 5px #fff;
+}
+
+/* ===== Botones ===== */
+.btn {
+  padding: .6rem .9rem;
+  border-radius: .6rem;
+  cursor: pointer;
+  transition: background-color .2s ease, transform .15s ease;
+}
+.btn.primario { background: #4c6ef5; color: #fff; }
+.btn.primario:hover { background: #3b5bdb; }
+.btn.secundario { background: #fff; border: 1px solid #cbd5e1; }
+
+/* ===== Pie de página ===== */
+.pie { text-align: center; padding: 1rem; color: #6b7280; }
