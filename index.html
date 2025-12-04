@@ -3,11 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ejercicio 006 · Formulario</title>
+  <title>Formulario</title>
   <link rel="stylesheet" href="estils.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
+
 <body id="pagina-formulario">
   <header class="navbar">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="hamburguesa">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
     <nav class="menu">
       <a href="index.html" aria-current="page">Formulario</a>
       <a href="interaccio.html">Interactividad</a>
@@ -15,8 +24,7 @@
   </header>
 
   <main class="contenedor">
-    <h1>Formulario personalizado con HTML + CSS</h1>
-    <p>Ejemplo de validación, estados y personalización visual sin JavaScript.</p>
+    <h1>Formulario</h1>
 
     <!-- Formulario principal -->
     <form action="destino.php" method="post" class="formulario" novalidate>

@@ -1,46 +1,166 @@
 /* ===== Reset y estilos base ===== */
-* { box-sizing: border-box; }
-html, body { height: 100%; margin: 0; }
+* { 
+  box-sizing: border-box; 
+}
+html, body { 
+  height: 100%; 
+  margin: 0; 
+}
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-  color: #1f2937;
-  background: #f8fafc;
+  color: #ffffff;
+  background: #000000;
 }
 
 /* Enlaces */
-a { color: #1f5cff; text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { 
+  color: #1D428A; /* Azul NBA profundo */
+  text-decoration: none; 
+}  
+a:hover { 
+  color: #C8102E; /* Rojo NBA */
+  text-decoration: underline; 
+}
 
 /* Titulares y párrafos */
-h1, h2 { margin: 0 0 .5rem; }
-p { margin: 0 0 1rem; }
-
-/* ===== Layout principal con Flexbox ===== */
-.navbar {
-  position: sticky; top: 0; z-index: 10;
-  display: flex; align-items: center; gap: 1rem;
-  padding: .75rem 1rem;
-  background: #fff; border-bottom: 1px solid #e5e7eb;
+h1, h2 { 
+  margin: 0 0 .5rem; 
+  color: #ffffff; 
 }
-.menu { display: flex; gap: .75rem; margin-left: auto; }
-.menu a[aria-current="page"] { font-weight: 600; color: #111827; }
+p { 
+  margin: 0 0 1rem; 
+  color: #e5e5e5; 
+}
+
+/* ===== Layout principal ===== */
+.navbar {
+  position: sticky; 
+  top: 0; 
+  z-index: 10;
+  display: flex; 
+  align-items: center; 
+  gap: 1rem;
+  padding: .75rem 1rem;
+  background: #111111; 
+  border-bottom: 2px solid #1D428A; 
+  width: 100%; 
+}
+/* ===== Hamburguesa visible por defecto (móvil) ===== */
+.menu-toggle {
+  display: none; /* checkbox oculto */
+}
+
+.hamburguesa {
+  display: flex; /* siempre visible en móvil */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.hamburguesa span {
+  display: block;
+  height: 3px;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* Menú oculto por defecto en móvil */
+.menu {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  background: #111111;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 200px;
+  border: 1px solid #1976D2;
+  border-radius: .5rem;
+  overflow: hidden;
+}
+
+.menu a {
+  padding: .75rem 1rem;
+  border-bottom: 1px solid #1976D2;
+}
+
+/* Mostrar menú al marcar checkbox */
+.menu-toggle:checked + .hamburguesa + .menu {
+  display: flex;
+}
+.menu { 
+  display: flex; 
+  gap: .75rem; 
+  margin-left: auto; 
+}
+.menu a[aria-current="page"] { 
+  font-weight: 600; 
+  color: #C8102E; 
+}
+
+/* ===== Desktop: mostrar menú horizontal, ocultar hamburguesa ===== */
+@media (min-width: 768px) {
+  .hamburguesa {
+    display: none;
+  }
+  .menu {
+    display: flex;
+    position: static;
+    flex-direction: row;
+    gap: .75rem;
+    border: none;
+    width: auto;
+  }
+  .menu a {
+    border: none;
+    padding: 0;
+  }
+} 
 
 .contenedor {
-  display: flex; flex-direction: column; gap: 1.25rem;
-  max-width: 960px; margin: 0 auto; padding: 1rem;
+  display: flex; 
+  flex-direction: column; 
+  gap: 1.25rem;
+  max-width: 960px; 
+  margin: 0 auto; 
+  padding: 1rem;
 }
 .bloque {
-  background: #fff; border: 1px solid #000000; border-radius: .75rem;
+  background: #000000; 
+  border: 1px solid #1D428A; 
+  border-radius: .75rem;
   padding: 1rem;
 }
 
 /* ===== Formulario ===== */
-.formulario { display: grid; gap: 1rem; }
-.fila { display: grid; gap: .5rem; }
-label { font-weight: 600; }
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #000000;        
+  border: 1px solid #1976D2;  /* Azul suave para formularios */
+  border-radius: .75rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(25,118,210,0.25); 
+}
+
+.fila {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+label { 
+  font-weight: 600; 
+  color: #ffffff; 
+}
 
 /* Inputs y campos */
-input, select, textarea, button { font: inherit; }
+input, select, textarea, button { 
+  font: inherit; 
+}
 
 input[type="text"],
 input[type="email"],
@@ -52,35 +172,38 @@ input[type="color"],
 input[type="range"],
 select,
 textarea {
-  border: 1.5px solid #cbd5e1;
+  border: 1.5px solid #1976D2;  
   border-radius: .5rem;
   padding: .6rem .7rem;
-  background: #f9fafb;
-  color: #111827;
+  background: #111111;         
+  color: #ffffff;
   transition: border-color .2s ease, box-shadow .2s ease, transform .15s ease;
 }
 
 /* Textarea */
-textarea { resize: vertical; min-height: 120px; }
+textarea { 
+  resize: vertical; 
+  min-height: 120px; 
+}
 
-/* Estado focus con transición animada */
+/* Estado focus */
 input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #4c6ef5;
-  box-shadow: 0 0 0 .25rem rgba(76,110,245,0.15);
+  border-color: #1976D2; 
+  box-shadow: 0 0 0 .25rem rgba(25,118,210,0.4);
   transform: translateY(-1px);
 }
 
 /* Estados de validación */
 input:required:invalid,
 select:required:invalid {
-  border-color: #ef4444; /* rojo si inválido */
+  border-color: #C8102E; /* Rojo NBA */
 }
 input:required:valid,
 select:required:valid {
-  border-color: #10b981; /* verde si válido */
+  border-color: #1976D2;
 }
 
 /* Personalización color y range */
@@ -93,20 +216,38 @@ input[type="color"] {
 
 input[type="range"] {
   appearance: none;
-  height: 6px; background: #e5e7eb; border-radius: 999px;
+  height: 6px; 
+  background: #333333; 
+  border-radius: 999px;
 }
 input[type="range"]::-webkit-slider-thumb {
   appearance: none;
-  width: 20px; height: 20px; border-radius: 50%;
-  background: #4c6ef5; border: 2px solid #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+  width: 20px; 
+  height: 20px; 
+  border-radius: 50%;
+  background: #1976D2; 
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.5);
   transition: transform .15s ease, background-color .2s ease;
 }
-input[type="range"]:active::-webkit-slider-thumb { transform: scale(1.05); }
+input[type="range"]:active::-webkit-slider-thumb { 
+  transform: scale(1.05); 
+}
 
-/* ===== Checkbox y Radio personalizados ===== */
-fieldset { border: none; padding: 0; margin: 0; }
-legend { font-weight: 600; margin-bottom: .5rem; }
+/* ===== Checkbox y Radio ===== */
+fieldset { 
+  border: none; 
+  padding: 0; 
+  margin: 0; 
+  display: flex; 
+  flex-direction: column; 
+  gap: .5rem; 
+}
+legend { 
+  font-weight: 600; 
+  margin-bottom: .5rem; 
+  color: #ffffff; 
+}
 
 .opc-check input,
 .opc-radio input {
@@ -117,42 +258,47 @@ legend { font-weight: 600; margin-bottom: .5rem; }
 
 .opc-check span,
 .opc-radio span {
-  display: inline-flex; align-items: center; gap: .5rem;
+  display: inline-flex; 
+  align-items: center; 
+  gap: .5rem;
   padding: .5rem .6rem;
-  border: 1.5px solid #cbd5e1; border-radius: .5rem;
-  background: #f9fafb; cursor: pointer;
+  border: 1.5px solid #1976D2; 
+  border-radius: .5rem;
+  background: #111111; 
+  cursor: pointer;
   transition: border-color .2s, box-shadow .2s, background-color .2s;
+  color: #ffffff;
 }
 
-/* Icono base */
 .opc-check span::before,
 .opc-radio span::before {
   content: "";
-  width: 18px; height: 18px;
-  border: 2px solid #64748b;
+  width: 18px; 
+  height: 18px;
+  border: 2px solid #1976D2;
   border-radius: 4px;
-  background: #fff;
+  background: #000000;
   transition: background-color .2s, transform .15s;
 }
 
 /* Radio círculo */
-.opc-radio span::before { border-radius: 50%; }
+.opc-radio span::before { 
+  border-radius: 50%; 
+}
 
 /* Estado checked */
 .opc-check input:checked + span {
-  border-color: #10b981; background: #ecfdf5;
+  border-color: #1976D2;
 }
 .opc-check input:checked + span::before {
-  background: #10b981;
-  box-shadow: inset 0 0 0 4px #fff;
+  background: #C8102E; /* Rojo NBA */
 }
 
 .opc-radio input:checked + span {
-  border-color: #4c6ef5; background: #eef2ff;
+  border-color: #1976D2; 
 }
 .opc-radio input:checked + span::before {
-  background: #4c6ef5;
-  box-shadow: inset 0 0 0 5px #fff;
+  background: #1976D2; 
 }
 
 /* ===== Botones ===== */
@@ -162,9 +308,110 @@ legend { font-weight: 600; margin-bottom: .5rem; }
   cursor: pointer;
   transition: background-color .2s ease, transform .15s ease;
 }
-.btn.primario { background: #4c6ef5; color: #fff; }
-.btn.primario:hover { background: #3b5bdb; }
-.btn.secundario { background: #fff; border: 1px solid #cbd5e1; }
+.btn.primario { 
+  background: #1D428A; /* Azul NBA */
+  color: #fff; 
+}
+.btn.primario:hover { 
+  background: #C8102E; /* Rojo NBA */
+}
+.btn.secundario { 
+  background: #000000; 
+  border: 1px solid #1976D2; 
+  color: #ffffff; 
+}
+.btn.secundario:hover { 
+  background: #111111; 
+}
 
 /* ===== Pie de página ===== */
-.pie { text-align: center; padding: 1rem; color: #6b7280; }
+.pie { 
+  text-align: center; 
+  padding: 1rem; 
+  color: #ffffff; 
+  border-top: 1px solid #1D428A; 
+}
+
+/* ===== Tarjetas NBA ===== */
+.tab-contenido {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  flex-wrap: wrap; 
+}
+
+.contenido {
+  flex: 1 1 220px;
+  background: #111111;
+  border: 1px solid #1D428A;
+  border-radius: .75rem;
+  padding: 1rem;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(29,66,138,0.3);
+  display: none;
+}
+
+/* Mostrar contenido según pestaña */
+#pagina-interaccion:has(#tab1:checked) .contenido-1 { display: block; }
+#pagina-interaccion:has(#tab2:checked) .contenido-2 { display: block; }
+#pagina-interaccion:has(#tab3:checked) .contenido-3 { display: block; }
+#pagina-interaccion:has(#tab4:checked) .contenido-4 { display: block; }
+
+/* ===== Flip card ===== */
+.flip-card { perspective: 1000px; }
+.flip-inner {
+  position: relative;
+  width: 100%;
+  min-height: 160px;
+  transform-style: preserve-3d;
+  transition: transform .6s;
+}
+.flip-front, .flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border: 1px solid #1D428A;
+  border-radius: .75rem;
+  padding: 1rem;
+  background: #111111;
+  color: #fff;
+}
+.flip-back { transform: rotateY(180deg); }
+#pagina-interaccion:has(#flip:checked) .flip-inner { 
+  transform: rotateY(180deg); 
+}
+
+/* ===== Carrusel NBA ===== */
+#carrusel .tab-contenido {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 220px;
+  position: relative;
+}
+
+#carrusel .contenido {
+  display: none;
+  position: absolute;
+  width: 300px;
+  max-width: 100%;
+  background: #111111;
+  border: 1px solid #1D428A;
+  border-radius: .75rem;
+  padding: 1rem;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(29,66,138,0.3);
+  text-align: center;
+  transform: translateY(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  opacity: 0;
+}
+
+#pagina-interaccion:has(#slide1:checked) #carrusel .contenido-1,
+#pagina-interaccion:has(#slide2:checked) #carrusel .contenido-2,
+#pagina-interaccion:has(#slide3:checked) #carrusel .contenido-3,
+#pagina-interaccion:has(#slide4:checked) #carrusel .contenido-4 {
+  display: block;
+  opacity: 1;
+  transform: translateY(-5px);
+}

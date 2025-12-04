@@ -3,61 +3,148 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ejercicio 006 · Interactividad CSS</title>
+  <title>Ejercicio 006 · Interactividad CSS · NBA</title>
   <link rel="stylesheet" href="estils.css">
 </head>
 <body id="pagina-interaccion">
-  <header class="navbar responsive">
-    <a class="logo" href="#">Ex006</a>
-
-    <!-- Toggle menú móvil -->
-    <input type="checkbox" id="menu-toggle" class="toggle-oculto">
+  <header class="navbar">
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
     <label for="menu-toggle" class="hamburguesa">
-      <span></span><span></span><span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </label>
-
     <nav class="menu">
-      <a href="index.html">Formulario</a>
-      <a href="interaccio.html" aria-current="page">Interactividad</a>
-      <a href="#tabs">Pestañas</a>
-      <a href="#extra">Componente extra</a>
+      <a href="index.html" aria-current="page">Formulario</a>
+      <a href="interaccio.html">Interactividad</a>
     </nav>
   </header>
 
   <main class="contenedor">
-    <!-- Pestañas CSS -->
+    <!-- Pestañas NBA -->
     <section id="tabs" class="bloque">
-      <h1>Pestañas con CSS</h1>
+      <h1>NBA</h1>
 
       <input type="radio" id="tab1" name="tab" class="tab-oculto" checked>
       <input type="radio" id="tab2" name="tab" class="tab-oculto">
       <input type="radio" id="tab3" name="tab" class="tab-oculto">
+      <input type="radio" id="tab4" name="tab" class="tab-oculto">
 
       <div class="tab-cabecera">
-        <label for="tab1" class="tab-btn">Introducción</label>
-        <label for="tab2" class="tab-btn">Detalle</label>
-        <label for="tab3" class="tab-btn">Resumen</label>
+        <label for="tab1" class="tab-btn">Historia</label>
+        <label for="tab2" class="tab-btn">Equipos</label>
+        <label for="tab3" class="tab-btn">Jugadores</label>
+        <label for="tab4" class="tab-btn">Curiosidades</label>
       </div>
 
       <div class="tab-contenido">
         <article class="contenido contenido-1">
-          <h2>Introducción</h2>
-          <p>Las pestañas funcionan solo con CSS usando radios y el selector :has().</p>
+          <h2>Historia de la NBA</h2>
+          <p>La NBA (National Basketball Association) se fundó en 1946 como la Basketball Association of America (BAA). En 1949 se fusionó con la National Basketball League (NBL) y adoptó el nombre actual.</p>
+          <p>Desde entonces, la liga ha crecido hasta contar con 30 equipos y convertirse en el mayor espectáculo de baloncesto del mundo.</p>
+          <p>Las décadas de los 80 y 90 marcaron una época dorada con rivalidades históricas entre los Lakers y Celtics, y la irrupción de Michael Jordan con los Chicago Bulls.</p>
         </article>
+
         <article class="contenido contenido-2">
-          <h2>Detalle</h2>
-          <p>Se utiliza :checked y :has() para mostrar u ocultar secciones.</p>
+          <h2>Equipos destacados</h2>
+          <ul>
+            <li><strong>Los Angeles Lakers:</strong> 17 campeonatos, hogar de Magic Johnson, Kobe Bryant y LeBron James.</li>
+            <li><strong>Boston Celtics:</strong> 17 campeonatos, cuna de Larry Bird y Bill Russell.</li>
+            <li><strong>Chicago Bulls:</strong> 6 campeonatos en los 90 liderados por Michael Jordan y Scottie Pippen.</li>
+            <li><strong>Golden State Warriors:</strong> dominadores recientes con Stephen Curry, Klay Thompson y Draymond Green.</li>
+          </ul>
+          <p>La NBA está dividida en Conferencia Este y Conferencia Oeste, cada una con tres divisiones.</p>
         </article>
+
         <article class="contenido contenido-3">
-          <h2>Resumen</h2>
-          <p>Sin JavaScript, accesible con etiquetas <label>.</p>
+          <h2>Jugadores legendarios</h2>
+          <p>La NBA ha visto pasar auténticas leyendas:</p>
+          <ul>
+            <li>Michael Jordan – considerado el mejor de todos los tiempos.</li>
+            <li>Kobe Bryant – ícono de los Lakers, 5 veces campeón.</li>
+            <li>LeBron James – aún activo, con múltiples títulos y récords.</li>
+            <li>Shaquille O’Neal – dominador en la pintura.</li>
+            <li>Larry Bird y Magic Johnson – protagonistas de una rivalidad histórica.</li>
+          </ul>
+          <p>Hoy destacan estrellas como Giannis Antetokounmpo, Luka Dončić y Nikola Jokić.</p>
+        </article>
+
+        <article class="contenido contenido-4">
+          <h2>Curiosidades de la NBA</h2>
+          <p>Algunos datos curiosos:</p>
+          <ul>
+            <li>El jugador más alto de la historia fue Gheorghe Mureșan (2,31 m).</li>
+            <li>Wilt Chamberlain anotó 100 puntos en un solo partido en 1962.</li>
+            <li>Los Toronto Raptors son el único equipo canadiense en la NBA.</li>
+            <li>El All-Star Weekend incluye concursos de triples y mates, además del partido de las estrellas.</li>
+          </ul>
         </article>
       </div>
     </section>
 
-    <!-- Componente extra: Flip card -->
+    <!-- Componente extra: Flip card NBA -->
     <section id="extra" class="bloque">
-      <h1>Flip card con checkbox</h1>
+      <h1>Flip card NBA</h1>
 
       <input type="checkbox" id="flip" class="toggle-oculto">
-      <label for="flip" class="btn primario">G
+      <label for="flip" class="btn primario">Ver más</label>
+
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">
+            <h2>Finales NBA</h2>
+            <p>Las Finales de la NBA deciden al campeón de la temporada.</p>
+          </div>
+          <div class="flip-back">
+            <h2>Dato curioso</h2>
+            <p>Los Boston Celtics y Los Angeles Lakers son los equipos con más títulos en la historia de la liga.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Componente extra: Carrusel NBA -->
+    <section id="carrusel" class="bloque">
+      <h1>Carrusel de equipos NBA</h1>
+
+      <!-- Radios ocultos para controlar el carrusel -->
+      <input type="radio" id="slide1" name="carrusel" class="tab-oculto" checked>
+      <input type="radio" id="slide2" name="carrusel" class="tab-oculto">
+      <input type="radio" id="slide3" name="carrusel" class="tab-oculto">
+      <input type="radio" id="slide4" name="carrusel" class="tab-oculto">
+
+      <!-- Botones -->
+      <div class="tab-cabecera">
+        <label for="slide1" class="tab-btn">Lakers</label>
+        <label for="slide2" class="tab-btn">Celtics</label>
+        <label for="slide3" class="tab-btn">Warriors</label>
+        <label for="slide4" class="tab-btn">Bulls</label>
+      </div>
+
+      <!-- Contenido del carrusel -->
+      <div class="tab-contenido">
+        <article class="contenido contenido-1">
+          <h2>Los Angeles Lakers</h2>
+          <p>Fundados en 1947, con sede en Los Ángeles. Han ganado 17 campeonatos y son conocidos por su estilo espectacular.</p>
+        </article>
+        <article class="contenido contenido-2">
+          <h2>Boston Celtics</h2>
+          <p>Fundados en 1946, con sede en Boston. También con 17 campeonatos, famosos por su tradición y rivalidad con los Lakers.</p>
+        </article>
+        <article class="contenido contenido-3">
+          <h2>Golden State Warriors</h2>
+          <p>Fundados en 1946, con sede en San Francisco. Han dominado la última década gracias al tiro de tres puntos.</p>
+        </article>
+        <article class="contenido contenido-4">
+          <h2>Chicago Bulls</h2>
+          <p>Fundados en 1966, con sede en Chicago. Conocidos mundialmente por Michael Jordan y sus seis títulos en los 90.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <small>Ejercicio 006 · Interactividad CSS · NBA</small>
+  </footer>
+</body>
+</html>
