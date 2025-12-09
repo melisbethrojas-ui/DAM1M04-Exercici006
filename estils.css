@@ -33,40 +33,51 @@ p {
 }
 
 /* ===== Layout principal ===== */
+/* ------- NAVBAR / HAMBURGUESA (mobile-first) ------- */
+
+/* ocultar el checkbox pero mantenerlo accesible para lectores */
+.menu-toggle {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* container header ya es sticky; aseguramos que el nav absoluto se posicione respecto al header */
 .navbar {
   position: sticky; 
-  top: 0; 
+  top: 0;
   z-index: 10;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   gap: 1rem;
   padding: .75rem 1rem;
-  background: #111111; 
-  border-bottom: 2px solid #1D428A; 
-  width: 100%; 
-}
-/* ===== Hamburguesa visible por defecto (móvil) ===== */
-.menu-toggle {
-  display: none; /* checkbox oculto */
+  background: #111111;
+  border-bottom: 2px solid #1D428A;
+  width: 100%;
 }
 
+/* botón hamburguesa (visible por defecto en móvil) */
 .hamburguesa {
-  display: flex; /* siempre visible en móvil */
+  display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 25px;
+  width: 28px;
   height: 20px;
   cursor: pointer;
+  margin-left: auto;
+  user-select: none;
 }
-
 .hamburguesa span {
   display: block;
   height: 3px;
-  background: #ffffff;
   border-radius: 2px;
+  background: #ffffff;
+  transition: transform .18s ease, opacity .18s ease;
 }
 
-/* Menú oculto por defecto en móvil */
+/* MENU: oculto por defecto en móvil */
 .menu {
   display: none;
   flex-direction: column;
@@ -74,50 +85,73 @@ p {
   background: #111111;
   position: absolute;
   top: 100%;
-  right: 0;
+  right: 1rem;
   width: 200px;
   border: 1px solid #1976D2;
   border-radius: .5rem;
   overflow: hidden;
+  z-index: 20;
+  transform-origin: top right;
+  transform: scaleY(.96);
+  opacity: 0;
+  transition: transform .16s ease, opacity .16s ease;
+  pointer-events: none;
 }
 
+/* estilo de enlaces dentro del menú */
 .menu a {
   padding: .75rem 1rem;
   border-bottom: 1px solid #1976D2;
-}
-
-/* Mostrar menú al marcar checkbox */
-.menu-toggle:checked + .hamburguesa + .menu {
-  display: flex;
-}
-.menu { 
-  display: flex; 
-  gap: .75rem; 
-  margin-left: auto; 
+  color: inherit;
 }
 .menu a[aria-current="page"] { 
   font-weight: 600; 
   color: #C8102E; 
 }
 
-/* ===== Desktop: mostrar menú horizontal, ocultar hamburguesa ===== */
+/* Mostrar menú cuando el checkbox esté checked (selector tolerante ~) */
+.menu-toggle:checked ~ .menu {
+  display: flex;
+  opacity: 1;
+  transform: scaleY(1);
+  pointer-events: auto;
+}
+
+/* Transformar la hamburguesa en una X cuando está activo */
+.menu-toggle:checked + .hamburguesa span:nth-child(1) {
+  transform: translateY(8.5px) rotate(45deg);
+}
+.menu-toggle:checked + .hamburguesa span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle:checked + .hamburguesa span:nth-child(3) {
+  transform: translateY(-8.5px) rotate(-45deg);
+}
+
+/* ===== Desktop: ocultar hamburguesa y mostrar menú horizontal ===== */
 @media (min-width: 768px) {
   .hamburguesa {
     display: none;
   }
+
   .menu {
     display: flex;
     position: static;
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
     flex-direction: row;
     gap: .75rem;
     border: none;
     width: auto;
+    margin-left: auto;
   }
+
   .menu a {
     border: none;
     padding: 0;
   }
-} 
+}
 
 .contenedor {
   display: flex; 
@@ -352,10 +386,10 @@ legend {
 }
 
 /* Mostrar contenido según pestaña */
-#pagina-interaccion:has(#tab1:checked) .contenido-1 { display: block; }
-#pagina-interaccion:has(#tab2:checked) .contenido-2 { display: block; }
-#pagina-interaccion:has(#tab3:checked) .contenido-3 { display: block; }
-#pagina-interaccion:has(#tab4:checked) .contenido-4 { display: block; }
+#pagina-interaccio:has(#tab1:checked) .contenido-1 { display: block; }
+#pagina-interaccio:has(#tab2:checked) .contenido-2 { display: block; }
+#pagina-interaccio:has(#tab3:checked) .contenido-3 { display: block; }
+#pagina-interaccio:has(#tab4:checked) .contenido-4 { display: block; }
 
 /* ===== Flip card ===== */
 .flip-card { perspective: 1000px; }
@@ -377,7 +411,7 @@ legend {
   color: #fff;
 }
 .flip-back { transform: rotateY(180deg); }
-#pagina-interaccion:has(#flip:checked) .flip-inner { 
+#pagina-interaccio:has(#flip:checked) .flip-inner { 
   transform: rotateY(180deg); 
 }
 
@@ -407,10 +441,10 @@ legend {
   opacity: 0;
 }
 
-#pagina-interaccion:has(#slide1:checked) #carrusel .contenido-1,
-#pagina-interaccion:has(#slide2:checked) #carrusel .contenido-2,
-#pagina-interaccion:has(#slide3:checked) #carrusel .contenido-3,
-#pagina-interaccion:has(#slide4:checked) #carrusel .contenido-4 {
+#pagina-interaccio:has(#slide1:checked) #carrusel .contenido-1,
+#pagina-interaccio:has(#slide2:checked) #carrusel .contenido-2,
+#pagina-interaccio:has(#slide3:checked) #carrusel .contenido-3,
+#pagina-interaccio:has(#slide4:checked) #carrusel .contenido-4 {
   display: block;
   opacity: 1;
   transform: translateY(-5px);
